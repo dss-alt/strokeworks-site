@@ -12,6 +12,7 @@
   h1 { font-size:2rem; line-height:1.2; margin:0 0 4px; }
   h2 { font-size:1.2rem; margin:32px 0 8px; }
   p, li { color:var(--ink); } .muted { color:var(--muted); }
+  h3 { font-size:1.05rem; margin:20px 0 4px; }
   a { color:var(--accent); }
 </style>
 </head>
@@ -20,7 +21,8 @@
 <h1>Strokeworks privacy policy</h1>
 <p class="muted">Effective 28 October 2026</p>
 
-<p>Strokeworks is an app for paddlers (outrigger, dragon boat, canoe and kayak) that measures speed, distance and stroke rate from your phone. This policy explains what the app collects, where it goes, and the choices you have. In short: <strong>your sessions stay on your phone unless you choose to share them.</strong> There are no accounts, no ads and no tracking.</p>
+<p>Strokeworks is an app for paddlers (outrigger, dragon boat, canoe and kayak) that measures speed, distance and stroke rate from your phone. This policy explains what the app collects, where it goes, and the choices you have.</p>
+<p>In short: <strong>the app asks whether you'd like to share your sessions with us.</strong> If you say yes, each session you record is uploaded after you finish, with its location removed, and we use them to understand paddling better and to build features that help you paddle better. You can change your answer at any time in Settings, and ask us to delete what you've shared. There are no accounts, no ads and no tracking, and we never sell your data.</p>
 
 <h2>Who we are</h2>
 <p>Strokeworks is made in New Zealand by Strokeworks. Contact: <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a>.</p>
@@ -34,37 +36,75 @@
   <li><strong>Your settings and boats</strong>, such as units, theme and boat names.</li>
   <li><strong>A crash report</strong>, if the app closes unexpectedly: a technical record of what went wrong, your app version and phone model. It is kept on your phone and only sent if you tap Send.</li>
 </ul>
+<p>All of this is stored on your phone first. What leaves your phone is described below.</p>
 
-<h2>Where your data is kept</h2>
-<p>Everything above is stored on your phone. We do not run a server that receives your sessions, and we cannot see them.</p>
-<p><strong>Phone backup.</strong> If you use Android's backup, your settings and sessions are included in your Google account's backup so they come back on a new phone. Google stores that backup encrypted; we have no access to it. You can turn backup off in your phone's settings.</p>
+<h2>Session sharing</h2>
+<p>The first time you use the app, it asks whether you'd like to share your sessions with us. If you say yes, sharing stays on until you turn it off in Settings. If you say no, nothing is uploaded.</p>
 
-<h2>When data leaves your phone</h2>
+<h3>What is uploaded</h3>
+<p>After you finish a session (on Wi-Fi unless you choose otherwise), the app uploads a copy of it holding:</p>
+<ul>
+  <li>the motion sensor readings, speed, distance, stroke rate and, if you used a sensor, heart rate;</li>
+  <li>the shape of your route, moved so it starts at 0,0, with altitude removed. It keeps the distances and turns but not where you paddled;</li>
+  <li>when the session was recorded;</li>
+  <li>the boat type and crew size (for example, a one-person outrigger), but not boat names;</li>
+  <li>your phone model, Android version and app version;</li>
+  <li>a random sharing ID that the app creates (see below).</li>
+</ul>
+<p>Your name, email address, contacts, photos, profile details (age, weight and gender) and your exact location are <strong>not</strong> uploaded.</p>
+
+<h3>Your sharing ID</h3>
+<p>You don't sign in. Instead, the app creates a random ID the first time it uploads, so the sessions from one phone can be grouped together. The ID isn't linked to your name, email or phone number, and it is shown in Settings so you can quote it if you ask us to delete your sessions. Deleting the app or clearing its data gives you a new ID next time.</p>
+
+<h3>What we use it for</h3>
+<p>We use shared sessions to:</p>
+<ul>
+  <li>improve how the app measures strokes, speed and distance;</li>
+  <li>build insights into what makes a boat go faster (such as stroke rate, rhythm and effort), so the app can help paddlers train and improve;</li>
+  <li>find and fix problems.</li>
+</ul>
+<p>Anything we publish or show other people from this work is combined from many sessions and doesn't identify anyone. We don't sell shared sessions, use them for advertising, or pass them to anyone else except the storage provider below.</p>
+
+<h3>Where it is stored, and for how long</h3>
+<p>Shared sessions are stored in Google Firebase (part of Google Cloud), which processes them on our behalf under its data processing terms and may store them outside New Zealand. Uploads are encrypted in transit and at rest, and only the Strokeworks team can read them. Like any internet service, Google sees your phone's internet address when it receives an upload.</p>
+<p>We keep a shared session for up to three years after it is uploaded, then delete it, unless you ask us to delete it sooner. Findings worked out from many sessions, which no longer contain any one person's session, may be kept longer.</p>
+
+<h3>Turning sharing off, and deleting what you've shared</h3>
+<ul>
+  <li>Turn off <strong>Share my sessions</strong> in Settings at any time. Nothing more is uploaded after that.</li>
+  <li>To delete sessions you've already shared, email <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a> with the sharing ID from Settings. We'll delete them within 30 days and tell you when it's done.</li>
+  <li>Turning sharing off doesn't change anything on your phone. Your sessions stay there until you delete them.</li>
+</ul>
+
+<h2>Other times data leaves your phone</h2>
 <p>Only when you choose to send it:</p>
 <ul>
-  <li><strong>Sharing or exporting</strong> a session (a GPX file, a raw data file, or a picture of the session) through your phone's share menu, or saving a picture to your photos. It goes wherever you send it, under that service's own privacy policy.</li>
-  <li><strong>Sending a session to the Strokeworks team</strong> or <strong>sending feedback or a crash report</strong> opens your email app with the file attached, addressed to feedback@strokeworks.app. A session sent to the team holds the motion sensor readings, speed, stroke rate and heart rate, any rating or note you add, and your phone model and app version. Its route is moved so the start sits at 0,0 and altitude is removed, so it keeps the route's shape and distance but not where you paddled. Boat names are left out too. Because it goes by email, we also see your email address. We use what you send only to fix problems and improve the app, including the stroke detection, and we don't sell it or pass it to anyone else. Ask us at any time and we'll delete it.</li>
+  <li><strong>Sharing or exporting</strong> a session (a GPX, FIT or TCX file, a raw data file, or a picture or video of the session) through your phone's share menu, or saving a picture to your photos. It goes wherever you send it, under that service's own privacy policy.</li>
+  <li><strong>Sending a session to the Strokeworks team</strong> or <strong>sending feedback or a crash report</strong> opens your email app with the file attached, addressed to feedback@strokeworks.app. A session sent to the team holds the motion sensor readings, speed, stroke rate and heart rate, any rating or note you add, and your phone model and app version. Its route is moved so the start sits at 0,0 and altitude is removed, so it keeps the route's shape and distance but not where you paddled. Boat names are left out too. Because it goes by email, we also see your email address. We use what you send only to fix problems and improve the app, as described under session sharing, and we don't sell it or pass it to anyone else. Ask us at any time and we'll delete it.</li>
+  <li><strong>Phone backup.</strong> If you use Android's backup, your settings and sessions are included in your Google account's backup so they come back on a new phone. Google stores that backup encrypted; we have no access to it. You can turn backup off in your phone's settings.</li>
 </ul>
 
 <h2>Services the app relies on</h2>
 <ul>
+  <li><strong>Google Firebase</strong> stores shared sessions, as described above (<a href="https://firebase.google.com/support/privacy">Firebase privacy and security</a>).</li>
   <li><strong>Maps.</strong> Map images are downloaded from OpenFreeMap (map data © OpenStreetMap contributors). Like any website, the map server sees your phone's internet address and which map area is being shown, which can indicate roughly where you are. Your recorded route is not sent to it.</li>
   <li><strong>Google Play.</strong> Google Play may collect crash and performance statistics (Android vitals) if you have allowed that on your phone, under Google's privacy policy.</li>
 </ul>
 
-<h2>Your choices</h2>
+<h2>Your choices and rights</h2>
 <ul>
+  <li>You can use every feature of the app with session sharing turned off.</li>
   <li>You can use the app without entering any profile details or pairing a heart rate sensor.</li>
-  <li>You can delete any session in the app, and deleting the app removes everything it stored on your phone.</li>
+  <li>You can delete any session in the app, and deleting the app removes everything it stored on your phone. Sessions you shared earlier are deleted from our storage when you ask, or after three years.</li>
   <li>You can turn off location, notifications or Bluetooth for the app in your phone's settings at any time. Speed and distance need location.</li>
-  <li>Under New Zealand's Privacy Act 2020 (and similar laws elsewhere) you can ask us what we hold about you, ask for it to be corrected, or ask for it to be deleted. As we only hold what you email us, write to hello@strokeworks.app.</li>
+  <li>Under New Zealand's Privacy Act 2020 and Health Information Privacy Code (and similar laws elsewhere, such as the GDPR), you can ask us what we hold about you, ask for it to be corrected, or ask for it to be deleted. Write to hello@strokeworks.app, including your sharing ID if it's about shared sessions. If you're not happy with our answer, you can complain to the Office of the Privacy Commissioner in New Zealand, or to your local data protection authority.</li>
 </ul>
 
 <h2>Children</h2>
-<p>Strokeworks is not directed at children under 13, and we do not knowingly collect information from them.</p>
+<p>Strokeworks is not directed at children under 13, and we do not knowingly collect information from them. If you are under 16, please ask a parent or guardian before you turn on session sharing. If you think a child has shared sessions with us, email us and we'll delete them.</p>
 
 <h2>Changes</h2>
-<p>If we change this policy, for example when we add accounts or sharing features, we'll update this page and its date, and tell you in the app before anything new is collected.</p>
+<p>If we change this policy, for example when we add accounts or team features, we'll update this page and its date, and tell you in the app before anything new is collected or shared.</p>
 </main>
 </body>
 </html>
