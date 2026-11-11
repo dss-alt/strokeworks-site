@@ -30,7 +30,7 @@
 
   /* Hero: navy, like the app's Sport theme. */
   .hero { background:var(--navy); color:#F3F7FA; overflow:hidden; position:relative; }
-  .hero::after { content:""; position:absolute; right:-60px; top:-40px; width:220px; height:120%; background:linear-gradient(105deg, transparent 0 38%, var(--cta) 38% 52%, transparent 52% 64%, var(--teal-bright) 64% 70%, transparent 70%); opacity:.9; pointer-events:none; }
+  .hero::after { content:""; position:absolute; right:90px; top:-50%; width:70px; height:200%; transform:rotate(15deg); background:linear-gradient(90deg, var(--cta) 0 44%, transparent 44% 81%, var(--teal-bright) 81%); opacity:.9; pointer-events:none; }
   .brand { display:flex; align-items:center; gap:10px; padding:20px 0 0; position:relative; z-index:1; }
   .brand svg { width:36px; height:36px; }
   .brand span { font-size:22px; }
@@ -99,7 +99,7 @@
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns:1fr; padding:28px 0 40px; }
     .hero-phone { display:none; }
-    .hero::after { width:120px; right:-50px; opacity:.55; }
+    .hero::after { width:50px; right:-6px; opacity:.55; }
     .screens { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:16px; margin:0 -16px; padding:0 16px 12px; }
     .phone-only { display:block; }
     .screens figure { flex:0 0 62%; scroll-snap-align:start; }
@@ -129,7 +129,7 @@
         <ul class="facts">
           <li>Waka ama · dragon boat · canoe · kayak</li>
           <li>Android</li>
-          <li>Free, everything unlocked</li>
+          <li>Free app, Pro unlocked for testers</li>
         </ul>
         <a class="btn" href="#join">Join the test</a>
       </div>
@@ -204,11 +204,11 @@
     <details><summary>I've got an iPhone</summary>
       <p>Android only for now. <a href="mailto:hello@strokeworks.app?subject=iPhone%20please&amp;body=Club%20(optional)%3A%20">Email us “iPhone please”</a> and we'll tell you when it's ready. Each one helps us decide when to build it.</p></details>
     <details><summary>Where does the phone go?</summary>
-      <p>Anywhere it stays put and you can see it: a deck mount, a dry bag under a bungee, or a pocket if you only want the numbers afterwards and by voice.</p></details>
+      <p>Anywhere it stays put and you can see it. Our test boats use a waterproof phone case with a Quad Lock style adapter sticker on the back, clipped into a cheap Quad Lock compatible motorbike mount on the deck. A dry bag under a bungee works too, or a pocket if you only want voice calls and the numbers afterwards.</p></details>
     <details><summary>What does it cost?</summary>
       <p>Nothing in the test. After launch the everyday features stay free. Pro will be a paid upgrade, and testers who stay 14 days get 12 months of it free.</p></details>
     <details><summary>What happens to my data?</summary>
-      <p>Your sessions stay on your phone. You can choose to back them up to your Google account, and to share them with us to improve stroke detection. See the <a href="privacy.html">privacy policy</a>.</p></details>
+      <p>The app asks once whether you'll share your sessions with us, and we hope you'll say yes: it's how we tune stroke and speed detection. Shared sessions upload over Wi-Fi after you finish, without your name or email, and with the route moved so it doesn't show where you launched. You can turn it off in Settings any time. Backing up to your Google account is a separate choice. See the <a href="privacy.html">privacy policy</a>.</p></details>
   </section>
 
   <footer><a href="index.html">Strokeworks</a> · <a href="privacy.html">Privacy policy</a> · <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a></footer>
