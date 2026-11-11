@@ -4,78 +4,214 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test Strokeworks</title>
-<meta name="description" content="Join the Strokeworks Android test: speed, stroke rate and distance for paddlers.">
+<meta name="description" content="Live speed, stroke rate and distance from the phone in your boat. Join the Strokeworks Android test: three taps, free, 12 months of Pro for staying 14 days.">
+<meta property="og:title" content="Test Strokeworks">
+<meta property="og:description" content="Live speed, stroke rate and distance from the phone in your boat. Join the Android test in three taps.">
+<meta property="og:image" content="https://strokeworks.app/press/feature-graphic-1024x500.png">
+<link rel="icon" href="press/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#0B1F33; --muted:#5B6B7B; --bg:#F4F7F9; --card:#FFFFFF; --accent:#0E7C6B; --cta:#FF6A13; --line:#D9E1E7; }
-  @media (prefers-color-scheme: dark) { :root { --ink:#E8EEF3; --muted:#9AA9B7; --bg:#07131F; --card:#0F2133; --accent:#2EE6C8; --line:#1F3449; } }
-  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width:720px; margin:0 auto; padding:48px 16px 64px; }
-  h1 { font-size:2.2rem; line-height:1.15; margin:0 0 12px; }
-  h2 { font-size:1.25rem; margin:36px 0 8px; }
-  p, li { color:var(--muted); } a { color:var(--accent); }
-  strong { color:var(--ink); }
-  ol.steps { list-style:none; padding:0; margin:20px 0 0; counter-reset:s; }
-  ol.steps > li { counter-increment:s; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 16px 16px 60px; margin:0 0 12px; position:relative; }
-  ol.steps > li::before { content:counter(s); position:absolute; left:16px; top:16px; width:30px; height:30px; border-radius:50%; background:var(--accent); color:var(--bg); font-weight:700; text-align:center; line-height:30px; }
-  ol.steps p { margin:4px 0 12px; }
-  .btn { display:inline-block; background:var(--cta); color:#fff; text-decoration:none; font-weight:700; padding:10px 18px; border-radius:8px; }
-  .note { border-left:4px solid var(--cta); padding:4px 0 4px 14px; margin:20px 0; }
-  .shots { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; margin:24px 0 8px; padding-bottom:8px; }
-  .shots img { width:44%; max-width:220px; flex:0 0 auto; border-radius:12px; scroll-snap-align:start; }
-  .video { position:relative; padding-top:56.25%; margin:16px 0; border-radius:12px; overflow:hidden; }
-  .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-  footer { margin-top:48px; font-size:15px; color:var(--muted); }
+  :root {
+    --navy:#0A2540; --navy-2:#12304F; --navy-line:#2A4A6B;
+    --bg:#F5F8F9; --card:#FFFFFF; --ink:#0A2540; --muted:#3E5A73; --line:#D6E0E6;
+    --teal:#0B7A6D; --teal-bright:#2EE6C9; --cta:#FF6A13; --on-cta:#1F0A00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#061423; --card:#0E2236; --ink:#F3F7FA; --muted:#A9BBCB; --line:#1E3550; --teal:#2EE6C9; }
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 Manrope, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:var(--teal); }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 16px; }
+  .display { font-family:"Barlow Condensed", Manrope, sans-serif; font-style:italic; font-weight:800; text-transform:uppercase; letter-spacing:.01em; line-height:.95; }
+
+  /* Hero: navy, like the app's Sport theme. */
+  .hero { background:var(--navy); color:#F3F7FA; overflow:hidden; position:relative; }
+  .hero::after { content:""; position:absolute; right:-60px; top:-40px; width:220px; height:120%; background:linear-gradient(105deg, transparent 0 38%, var(--cta) 38% 52%, transparent 52% 64%, var(--teal-bright) 64% 70%, transparent 70%); opacity:.9; pointer-events:none; }
+  .brand { display:flex; align-items:center; gap:10px; padding:20px 0 0; position:relative; z-index:1; }
+  .brand svg { width:36px; height:36px; }
+  .brand span { font-size:22px; }
+  .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:32px; align-items:center; padding:40px 0 56px; position:relative; z-index:1; }
+  .hero h1 { font-size:clamp(46px, 8vw, 84px); margin:0 0 18px; }
+  .hero h1 em { color:var(--teal-bright); font-style:inherit; }
+  .hero p { color:#C9D6E2; font-size:19px; margin:0 0 24px; max-width:34em; }
+  .facts { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px; padding:0; list-style:none; }
+  .facts li { border:1.5px solid var(--navy-line); border-radius:999px; padding:4px 12px; font-size:14px; font-weight:700; color:#E3ECF3; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--cta); color:var(--on-cta); font-weight:800; text-decoration:none; padding:15px 26px; border-radius:12px; font-size:18px; min-height:52px; }
+  .btn:hover { filter:brightness(1.06); }
+  .btn.small { font-size:16px; padding:11px 18px; min-height:44px; }
+  .hero-phone { justify-self:center; width:min(300px, 100%); }
+
+  .phone { border-radius:30px; border:7px solid #0B1A2A; background:#0B1A2A; box-shadow:0 18px 40px rgba(6,20,35,.28); overflow:hidden; aspect-ratio:1170/2532; }
+  .phone img { display:block; width:100%; height:100%; object-fit:cover; object-position:top; }
+
+  section { padding:56px 0 0; }
+  h2 { font-size:clamp(34px, 5vw, 48px); margin:0 0 8px; }
+  .lead { color:var(--muted); margin:0 0 24px; max-width:36em; }
+
+  /* Screens: a swipeable row on phones, a grid on wide screens. */
+  .screens { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
+  .screens figure { margin:0; }
+  .phone-only { display:none; }
+  .screens figcaption { margin-top:12px; font-weight:800; }
+  .screens figcaption span { display:block; font-weight:400; color:var(--muted); font-size:15px; }
+
+  .features { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+  .feature { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; }
+  .feature b { display:block; font-size:17px; margin-bottom:2px; }
+  .feature p { margin:0; color:var(--muted); font-size:15px; }
+  .feature .pro { font-size:11px; font-weight:800; color:var(--cta); border:1.5px solid var(--cta); border-radius:5px; padding:0 5px; margin-left:6px; vertical-align:2px; }
+
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px; align-items:start; }
+  .shot { margin:0; background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .shot img { display:block; width:100%; }
+  .shot figcaption { padding:12px 16px 14px; color:var(--muted); font-size:15px; }
+  .shot figcaption b { color:var(--ink); }
+
+  /* Join: three numbered steps. */
+  .join { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:28px; margin-top:8px; }
+  .steps { list-style:none; margin:20px 0 0; padding:0; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; counter-reset:s; }
+  .steps li { counter-increment:s; border:1px solid var(--line); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:8px; }
+  .steps li::before { content:counter(s); width:34px; height:34px; border-radius:50%; background:var(--navy); color:var(--teal-bright); font:800 18px/34px Manrope, sans-serif; text-align:center; }
+  @media (prefers-color-scheme: dark) { .steps li::before { background:var(--teal-bright); color:var(--navy); } }
+  .steps b { font-size:18px; }
+  .steps p { margin:0; color:var(--muted); font-size:15px; flex:1; }
+  .steps .btn { align-self:flex-start; }
+  .hint { color:var(--muted); font-size:15px; margin:16px 0 0; }
+
+  .perk { display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:center; background:var(--navy); color:#F3F7FA; border-radius:22px; padding:26px 28px; margin-top:20px; }
+  .perk .big { font-size:64px; color:var(--cta); }
+  .perk .big small { display:block; font-size:22px; color:#F3F7FA; }
+  .perk p { margin:0; color:#C9D6E2; }
+  .perk b { color:#fff; }
+
+  details { border-bottom:1px solid var(--line); padding:14px 0; }
+  summary { font-weight:800; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+  summary::after { content:"+"; color:var(--teal); font-size:22px; line-height:1; }
+  details[open] summary::after { content:"–"; }
+  details p { color:var(--muted); margin:8px 0 0; }
+
+  footer { padding:48px 0 40px; color:var(--muted); font-size:15px; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns:1fr; padding:28px 0 40px; }
+    .hero-phone { display:none; }
+    .hero::after { width:120px; right:-50px; opacity:.55; }
+    .screens { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:16px; margin:0 -16px; padding:0 16px 12px; }
+    .phone-only { display:block; }
+    .screens figure { flex:0 0 62%; scroll-snap-align:start; }
+    .features, .steps, .pair { grid-template-columns:1fr; }
+    .join { padding:12px; } .join .steps { margin-top:0; }
+    .perk { grid-template-columns:1fr; gap:8px; padding:22px; }
+  }
+  @media (min-width: 861px) and (max-width: 1000px) { .features { grid-template-columns:repeat(2, 1fr); } }
 </style>
 </head>
 <body>
-<main>
-<h1>Test Strokeworks</h1>
-<p>Strokeworks shows live speed, stroke rate and distance from the phone in your boat: outrigger, waka ama, dragon boat, canoe or kayak. We're testing it with New Zealand paddlers before it goes on the Play Store for everyone.</p>
-<p>It's free during the test, with every feature unlocked. When it launches, the everyday features (live speed, stroke rate, distance, maps and your log book) stay free, and some training tools you'll try in the test, such as plans, trials and the stroke analysis, become part of a paid Pro version.</p>
 
-<div class="shots" aria-label="App screens">
-  <img src="img/test-ready.jpg" alt="Ready screen: pick your boat and tap Start">
-  <img src="img/test-live.jpg" alt="Live screen: speed, stroke rate and push">
-  <img src="img/test-summary.jpg" alt="Summary: route map coloured by speed, distance and times">
-  <img src="img/test-share.jpg" alt="Share picture of a paddle for Instagram or Strava">
-</div>
-<!-- Video: replace VIDEO_ID with the YouTube id and remove the comment markers.
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Strokeworks on the water" allowfullscreen></iframe></div>
--->
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="1" y="1" width="118" height="118" rx="26" fill="#12304F" stroke="#2A4A6B" stroke-width="2"/>
+        <path d="M15,84 H36 C58,84 62,42 82,40 C93.5,39 100.5,47 103,56" fill="none" stroke="#2EE6C9" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="103" cy="57" r="10" fill="#FF6A13"/>
+      </svg>
+      <span class="display">Strokeworks</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="display">Your phone is your <em>paddling computer</em></h1>
+        <p>Live speed, stroke rate and distance from the phone in your boat. Open it, tap Start, paddle. Help us test it before it goes on the Play Store.</p>
+        <ul class="facts">
+          <li>Waka ama · dragon boat · canoe · kayak</li>
+          <li>Android</li>
+          <li>Free, everything unlocked</li>
+        </ul>
+        <a class="btn" href="#join">Join the test</a>
+      </div>
+      <div class="hero-phone phone"><img src="img/t-live.jpg" alt="Live screen: 10.4 km/h, 48 strokes a minute, heart rate 152, and the last three strokes"></div>
+    </div>
+  </div>
+</header>
 
-<p class="note"><strong>Android phones only for now.</strong> Got an iPhone? <a href="https://forms.gle/FORM_ID">Register your interest</a> with the same short form. It tells us how many paddlers want an iPhone version.</p>
+<main class="wrap">
 
-<h2>Help shape it</h2>
-<p>You'll be the first paddlers to use it, and what you tell us decides what gets built next. As a thank you, everyone who stays in the test for the full 14 days keeps <strong>Pro free for 12 months</strong> after launch. There's no code to enter and no card needed: sign in with Google in the app (Settings &gt; Account and backup) using the email you signed up with, and Pro switches on for your account at launch.</p>
+  <section aria-labelledby="screens">
+    <h2 id="screens" class="display">On the water and after</h2>
+    <p class="lead">Numbers big enough to read in the sun with water on the screen. Swipe for another screen, or use the volume keys.</p>
+    <div class="screens">
+      <figure><div class="phone"><img src="img/t-ready.jpg" alt="Home screen: pick a boat, a session and a screen, then Start" loading="lazy"></div>
+        <figcaption>Open, tap Start<span>Your boat and screen are remembered.</span></figcaption></figure>
+      <figure class="phone-only"><div class="phone"><img src="img/t-live.jpg" alt="Live speed and stroke rate" loading="lazy"></div>
+        <figcaption>Live speed and rate<span>Plus push, heart rate and voice calls.</span></figcaption></figure>
+      <figure><div class="phone"><img src="img/t-plan.jpg" alt="A plan in progress: work piece 3 of 8, 420 m to go" loading="lazy"></div>
+        <figcaption>Train to a plan<span>8 × 1 km, timed and counted for you.</span></figcaption></figure>
+      <figure><div class="phone"><img src="img/t-summary.jpg" alt="Session summary with a speed-coloured route map and totals" loading="lazy"></div>
+        <figcaption>See every paddle<span>Map, charts, splits and bests.</span></figcaption></figure>
+      <figure><div class="phone"><img src="img/t-share.jpg" alt="A share picture: 13.93 km with a glowing route, time, speed and rate" loading="lazy"></div>
+        <figcaption>Share it<span>Pictures and flyby videos for your story.</span></figcaption></figure>
+    </div>
+  </section>
 
-<h2>Join in four steps</h2>
-<p>Use the same Google account that your phone's Play Store uses.</p>
-<ol class="steps">
-  <li><strong>Tell us about your paddling</strong>
-    <p>Eight quick questions, about a minute. We use your email for your free Pro and test news only.</p>
-    <a class="btn" href="https://forms.gle/FORM_ID">Sign up</a></li>
-  <li><strong>Join the testers group</strong>
-    <p>Sign in to Google and tap "Join group". You won't get emails from it.</p>
-    <a class="btn" href="https://groups.google.com/g/strokeworks-testers">Join the group</a></li>
-  <li><strong>Accept the test invite</strong>
-    <p>Tap "Become a tester". If it says the app isn't available, wait a few minutes after step 2 and try again.</p>
-    <a class="btn" href="https://play.google.com/apps/testing/com.strokeworks.app">Become a tester</a></li>
-  <li><strong>Install from the Play Store</strong>
-    <p>Install it like any other app. Updates arrive automatically.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.strokeworks.app">Open in Play Store</a></li>
-</ol>
+  <section id="join" aria-labelledby="join-h">
+    <h2 id="join-h" class="display">Join in three taps</h2>
+    <p class="lead">No forms. Use the Google account your phone's Play Store uses.</p>
+    <div class="join">
+      <ol class="steps">
+        <li><b>Join the testers group</b><p>Tap “Join group”. It won't send you emails.</p>
+          <a class="btn small" href="https://groups.google.com/g/strokeworks-testers">Join the group</a></li>
+        <li><b>Become a tester</b><p>Tap “Become a tester”. If it isn't ready yet, give it a few minutes after step 1.</p>
+          <a class="btn small" href="https://play.google.com/apps/testing/com.strokeworks.app">Become a tester</a></li>
+        <li><b>Install and paddle</b><p>Install from the Play Store like any app. Updates arrive by themselves.</p>
+          <a class="btn small" href="https://play.google.com/store/apps/details?id=com.strokeworks.app">Get it on Play</a></li>
+      </ol>
+      <p class="hint">Please keep it installed for 14 days: Google needs 12 testers to stay that long before the app can go public. Tell us what's wrong or missing from Settings › About › Send feedback in the app.</p>
+    </div>
+    <div class="perk">
+      <div class="big display">12 months<small>of Pro, free</small></div>
+      <p><b>Our thanks for staying in the test for 14 days.</b> Sign in with Google in the app (Settings › Account and backup) and Pro switches on for that account when it launches. No code, no card.</p>
+    </div>
+  </section>
 
-<h2>What we'd love from you</h2>
-<ul>
-  <li>Take it out on a few paddles over the next two weeks. Open it, tap Start, put the phone in your boat, paddle.</li>
-  <li><strong>Please keep the app installed for at least 14 days.</strong> Google needs 12 testers to stay in for 14 days before the app can go public.</li>
-  <li>Tell us what's confusing, wrong or missing: Settings &gt; Send feedback in the app, or <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a>.</li>
-</ul>
+  <section aria-labelledby="what">
+    <h2 id="what" class="display">What you can try</h2>
+    <p class="lead">Everything is unlocked in the test. After launch the everyday features stay free; the ones marked PRO become a paid upgrade.</p>
+    <div class="features">
+      <div class="feature"><b>Live speed, rate and distance</b><p>Six live screens, big numbers, voice calls as you go.</p></div>
+      <div class="feature"><b>Push and stroke graph</b><p>How hard each drive pulls, the same with or against the tide.</p></div>
+      <div class="feature"><b>Hands-free</b><p>Starts when you paddle, pauses when you stop. Laps with two taps.</p></div>
+      <div class="feature"><b>Heart rate</b><p>From a chest strap or a watch that broadcasts it.</p></div>
+      <div class="feature"><b>Plans and trials<span class="pro">PRO</span></b><p>Ready-made sets, your own, and pieces found for you.</p></div>
+      <div class="feature"><b>Speed through the water<span class="pro">PRO</span></b><p>The tide or current taken off, so effort reads the same both ways.</p></div>
+      <div class="feature"><b>Progress<span class="pro">PRO</span></b><p>Best times and distance per stroke over the weeks.</p></div>
+      <div class="feature"><b>Share it</b><p>Pictures and flyby videos for Instagram and Strava.</p></div>
+      <div class="feature"><b>Exports and backup</b><p>FIT, GPX and TCX files. Backed up to your Google account.</p></div>
+    </div>
+    <div class="pair">
+      <figure class="shot"><img src="img/t-water.jpg" alt="Map with arrows for where the water was flowing, and speed through the water against over the ground" loading="lazy">
+        <figcaption><b>Where the tide was going.</b> Arrows for the flow, bigger and warmer where it was stronger. Worked out from your strokes; no extra gear.</figcaption></figure>
+      <figure class="shot"><img src="img/t-progress.jpg" alt="Progress chart: best 1 km time getting faster over ten weeks" loading="lazy">
+        <figcaption><b>Are you getting faster?</b> One dot per session, your best so far as a line.</figcaption></figure>
+    </div>
+  </section>
 
-<h2>Your data</h2>
-<p>Your sessions stay on your phone. You can choose to share them with us to help improve stroke detection, or back them up with your Google account. See the <a href="privacy.html">privacy policy</a>.</p>
+  <section aria-labelledby="faq">
+    <h2 id="faq" class="display">Questions</h2>
+    <details><summary>I've got an iPhone</summary>
+      <p>Android only for now. <a href="mailto:hello@strokeworks.app?subject=iPhone%20please&amp;body=Club%20(optional)%3A%20">Email us “iPhone please”</a> and we'll tell you when it's ready. Each one helps us decide when to build it.</p></details>
+    <details><summary>Where does the phone go?</summary>
+      <p>Anywhere it stays put and you can see it: a deck mount, a dry bag under a bungee, or a pocket if you only want the numbers afterwards and by voice.</p></details>
+    <details><summary>What does it cost?</summary>
+      <p>Nothing in the test. After launch the everyday features stay free. Pro will be a paid upgrade, and testers who stay 14 days get 12 months of it free.</p></details>
+    <details><summary>What happens to my data?</summary>
+      <p>Your sessions stay on your phone. You can choose to back them up to your Google account, and to share them with us to improve stroke detection. See the <a href="privacy.html">privacy policy</a>.</p></details>
+  </section>
 
-<footer><a href="index.html">Strokeworks</a> · <a href="privacy.html">Privacy policy</a> · <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a></footer>
+  <footer><a href="index.html">Strokeworks</a> · <a href="privacy.html">Privacy policy</a> · <a href="mailto:hello@strokeworks.app">hello@strokeworks.app</a></footer>
 </main>
 </body>
 </html>
